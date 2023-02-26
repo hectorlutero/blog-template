@@ -7,7 +7,7 @@ import { getAllPosts } from "../lib/api";
 import Head from "next/head";
 import { CMS_NAME } from "../lib/constants";
 import Post from "../interfaces/post";
-import Header from "../components/header";
+import HeroSection from "../components/sections/hero-section";
 
 type Props = {
   allPosts: Post[];
@@ -15,7 +15,10 @@ type Props = {
 
 export default function Index({ allPosts }: Props) {
   const heroPost = allPosts[0];
+  const secondaryPost = allPosts[1];
+  const tertiaryPost = allPosts[2];
   const morePosts = allPosts.slice(1);
+  // console.log(heroPost);
   return (
     <>
       <Layout>
@@ -24,6 +27,11 @@ export default function Index({ allPosts }: Props) {
         </Head>
         <Container>
           <Intro />
+          <HeroSection
+            heroPost={heroPost}
+            secondaryPost={secondaryPost}
+            tertiaryPost={tertiaryPost}
+          />
           {heroPost && (
             <HeroPost
               title={heroPost.title}
